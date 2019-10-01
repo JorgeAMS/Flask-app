@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        
+        <title>Books!</title>
+    </head>
+    <body>
+        <div class="lefted">
+            <img src="https://i.pinimg.com/originals/34/90/2f/34902fc14c13beeaba1395610bc47590.jpg" alt="">
+        </div>
+        <div class="righted">
+            <div class="loginfrm">
+                <form action="{{ url_for('account') }}" method="post">
+                    <div class="input-field">
+                        <input id="email" name="email" type="text" class="validate">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="input-field">
+                        <input id="password" name="password" type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                    <span class="err">{{ err_message }}</span>
+                    <div>
+                        <button class="btn waves-effect waves-light buttoncolor">Login!
+                                <i class="material-icons right">chevron_right</i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

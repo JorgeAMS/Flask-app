@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{ url_for('static',filename='styles/styles.css') }}">
+        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        
+        <title>Books!</title>
+    </head>
+    <body>
+        <div class="findbooks row">
+            <form action="{{ url_for('book') }}" class="col s12" method="POST">
+                <div class="row">
+                    <div class="input-field col s4">
+                        <input id="isbn" type="text" class="validate" name="isbn">
+                        <label for="isbn">ISBN</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="book_name" type="text" class="validate" name="book_name">
+                        <label for="book_name">Book Name</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input id="author_name" type="text" class="validate" name="author_name">
+                        <label for="author_name">Author Name</label>
+                    </div>
+                </div>
+                <div class="cetralize">
+                    <button class="btn waves-effect waves-light buttoncolor cetralize">Look For
+                            <i class="material-icons right">import_contacts</i>
+                    </button>
+                </div>
+            </form>
+            
+            <span class="err">{{ error_massage }}</span>
+            <table>
+                <tr>
+                    <th>ISBN</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                </tr>
+                {% for book in books %}
+                    <tr>
+                        <td>{{ book.isbn }}</td>
+                        <td>{{ book.title }}</td>
+                        <td>{{ book.author }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </body>
+</html>

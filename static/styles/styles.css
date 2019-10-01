@@ -1,0 +1,65 @@
+body{
+    margin: 0;
+}
+
+.lefted{
+    height: 100vh;
+    width: 75%;
+    background-color: rgb(124, 82, 20);
+    float: left;
+    
+    overflow: hidden;
+}
+.righted{
+    height: 100vh;
+    width: 25%;
+    background-color: rgba(253, 253, 253, 0.753);
+    float: left;
+    padding-top: 30vh;
+    overflow: hidden;
+}
+
+img{
+    height: 100%;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+
+.righted .loginfrm{
+    height: auto;
+    padding: 5vh;
+}
+
+.err{
+    color: red;
+}
+
+
+.findbooks{
+    padding: 5% 10%;
+}
+
+.findbooks .cetralize{
+    width: 100%
+}
+
+.findbooks .cetralize .cetralized{
+    width: 30%;
+    margin-left: 35%;
+}
+
+
+.input-field input:focus + label {
+    color: rgb(124, 82, 20) !important;
+}
+/* label underline focus color */
+.input-field input:focus {
+    border-bottom: 1px solid rgb(124, 82, 20) !important;
+    box-shadow: 0 1px 0 0 rgb(124, 82, 20) !important;
+}
+.buttoncolor{
+    background-color: rgb(124, 82, 20) !important;
+}
+.buttoncolor:hover{
+    color: rgb(206, 206, 206) !important;
+}
