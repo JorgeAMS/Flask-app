@@ -23,6 +23,7 @@ img{
     height: 100%;
     background-repeat: no-repeat;
     vertical-align: middle;
+    text-align: center;
 }
 
 .righted .loginfrm{
@@ -40,12 +41,14 @@ img{
 }
 
 .findbooks .cetralize{
-    width: 100%
+    width: 100%;
+    text-align: center;
 }
 
 .findbooks .cetralize .cetralized{
-    width: 30%;
-    margin-left: 35%;
+    width: 50%;
+    /*margin-left: 25%;*/
+    margin-bottom: 30px;
 }
 
 

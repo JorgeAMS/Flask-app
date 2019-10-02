@@ -17,26 +17,26 @@
             <form action="{{ url_for('book') }}" class="col s12" method="POST">
                 <div class="row">
                     <div class="input-field col s4">
-                        <input id="isbn" type="text" class="validate" name="isbn">
+                        <input id="isbn" type="text" class="" name="isbn">
                         <label for="isbn">ISBN</label>
                     </div>
                     <div class="input-field col s4">
-                        <input id="book_name" type="text" class="validate" name="book_name">
+                        <input id="book_name" type="text" class="" name="book_name">
                         <label for="book_name">Book Name</label>
                     </div>
                     <div class="input-field col s4">
-                        <input id="author_name" type="text" class="validate" name="author_name">
+                        <input id="author_name" type="text" class="" name="author_name">
                         <label for="author_name">Author Name</label>
                     </div>
                 </div>
                 <div class="cetralize">
-                    <button class="btn waves-effect waves-light buttoncolor cetralize">Look For
+                    <button class="btn waves-effect waves-light buttoncolor cetralized">Search
                             <i class="material-icons right">import_contacts</i>
                     </button>
+                    <br>
+                    <span class="err cetralize">{{ error_massage }}</span>
                 </div>
             </form>
-            
-            <span class="err">{{ error_massage }}</span>
             <table>
                 <tr>
                     <th>ISBN</th>
@@ -45,7 +45,7 @@
                 </tr>
                 {% for book in books %}
                     <tr>
-                        <td>{{ book.isbn }}</td>
+                        <td><a href="/account/find/{{ book.isbn }}" name="isbn_book">{{ book.isbn }}</a></td>
                         <td>{{ book.title }}</td>
                         <td>{{ book.author }}</td>
                     </tr>

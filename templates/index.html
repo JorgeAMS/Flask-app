@@ -15,16 +15,17 @@
     <body>
         <div class="lefted">
             <img src="https://i.pinimg.com/originals/34/90/2f/34902fc14c13beeaba1395610bc47590.jpg" alt="">
+            <!--<img src="https://stmed.net/sites/default/files/styles/1024x600/public/book-wallpapers-28442-2893059.jpg?itok=IuiHKJ5n" alt="">-->
         </div>
         <div class="righted">
             <div class="loginfrm">
                 <form action="{{ url_for('account') }}" method="post">
                     <div class="input-field">
-                        <input id="email" name="email" type="text" class="validate">
+                        <input id="email" name="email" type="text" class="">
                         <label for="email">Email</label>
                     </div>
                     <div class="input-field">
-                        <input id="password" name="password" type="password" class="validate">
+                        <input id="password" name="password" type="password" class="">
                         <label for="password">Password</label>
                     </div>
                     <span class="err">{{ err_message }}</span>

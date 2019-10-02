@@ -1,4 +1,4 @@
-import os
+import os, requests
 
 from flask import Flask, render_template, request, session, abort, redirect
 from sqlalchemy import create_engine
@@ -37,14 +37,48 @@ def account():
    #SELECT * FROM public.user WHERE email = "jamorales516@icloud.com" AND password = "12345"
 
 
-@app.route("/account?find", methods=["POST"])
+@app.route("/account/find", methods=["POST"])
 def book():
     isbn=request.form.get("isbn")
     book_name=request.form.get("book_name")
     author_name=request.form.get("author_name")
 
+    if str(isbn)=="":
+        isbn="null0"
+    if str(book_name)=="":
+        book_name="null0"
+    if str(author_name)=="":
+        author_name="null0"
+
     try:
-        books=db.execute("SELECT * FROM public.books WHERE isbn = :isbn OR title = :book_name OR author = :author_name",{"isbn":isbn,"book_name":book_name,"author_name":author_name}).fetchall()
-        return render_template("account.html", books=books)
+        books=db.execute("SELECT * FROM public.books WHERE isbn LIKE :isbn OR title LIKE :book_name OR author LIKE :author_name",{"isbn":"%"+isbn+"%","book_name":"%"+book_name+"%","author_name":"%"+author_name+"%"}).fetchall()
+        if str(books)=="[]":
+            return render_template("account.html", error_massage="No se encontraron resultados.")
+        else:
+            return render_template("account.html", books=books)
     except Exception as a:
         return render_template("account.html", error_massage=a)
+
+@app.route("/account/find/<isbn_book>")
+def booked(isbn_book):
+    try:
+        book=db.execute("SELECT * FROM public.books WHERE isbn = :isbn_book",{"isbn_book":isbn_book})
+
+        url="https://www.goodreads.com/book/review_counts.json"
+        key="9tMr4aYUqp51SYMuqS8YPA"
+
+        book_id=requests.get(url, params={"key":key, "isbns":isbn_book})
+
+
+        return render_template("account.html", books=book)
+    except Exception as eb:
+        return render_template("account.html", error_massage=eb)
+    
+
+
+
+
+"""
+key: 9tMr4aYUqp51SYMuqS8YPA
+secret: 25NmsyrVul592FeEy9nVYQ6HwyD0xyZxMo1gSk9tlzo
+"""
