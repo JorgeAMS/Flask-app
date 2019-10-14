@@ -1,5 +1,7 @@
 # Flask-app
 
+Install requeriments:
+  $pip install -r requeriments.txt
 
 Setting environmental variables:
 
